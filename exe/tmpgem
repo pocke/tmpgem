@@ -1,0 +1,5 @@
+#!ruby
+
+require 'tmpgem'
+
+exit Tmpgem::CLI.new(ARGV).run
