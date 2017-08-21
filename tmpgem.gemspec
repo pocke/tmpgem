@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Masataka Kuwabara"]
   spec.email         = ["kuwabara@pocke.me"]
 
-  spec.summary       = %q{}
-  spec.description   = %q{}
+  spec.summary       = %q{Temporary gem installer}
+  spec.description   = %q{Temporary gem installer}
   spec.homepage      = "https://github.com/pocke/tmpgem"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
