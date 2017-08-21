@@ -20,7 +20,7 @@ module Tmpgem
 
       backup_original(fname) do
         install(fname)
-        puts "#{fname} is installed. Please CTRL-C when you do not need this gem."
+        puts "#{fname} is installed temporary. Please CTRL-C when you do not need this gem."
         sleep
       end
       return 0
@@ -93,14 +93,23 @@ module Tmpgem
         begin
           yield
         rescue Interrupt
-          fname.match(/^(.+)-([^-]+)\.gem$/)
-          gemname = $1
-          version = $2
+          puts 'Restoring the gem...'
+          gemname = gemname(fname)
+          version = version(fname)
           capture3!('gem', 'uninstall', gemname, '--version', version, '--ignore-dependencies')
           FileUtils.cp(tmpfile, cache)
           capture3!('gem', 'install', '--local', gemname, chdir: File.dirname(tmpfile))
+          puts "#{gemname(fname)} is restored!"
         end
       end
+    end
+
+    def gemname(fname)
+      fname.match(/^(.+)-([^-]+)\.gem$/)[1]
+    end
+
+    def version(fname)
+      fname.match(/^(.+)-([^-]+)\.gem$/)[2]
     end
   end
 end
