@@ -56,3 +56,9 @@ tmpgem is restored!
 
 # You can use the original gem.
 ```
+
+## License
+
+Apache License Version 2.0
+
+See [LICENSE](https://github.com/pocke/tmpgem/blob/master/LICENSE)
